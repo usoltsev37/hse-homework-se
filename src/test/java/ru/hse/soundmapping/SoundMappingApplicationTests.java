@@ -104,6 +104,14 @@ class SoundMappingApplicationTests {
         Assertions.assertEquals(List.of(song3, song2, song1), musicService.sortMusicsByAuthor(songs));
     }
 
+    @Test
+    void testBuyMusicIfNotEnoughMoney() {
+        PriceService priceService = new PriceService();
+        User testUser = new User(6L, "fst@mail.ru", "password1", "Phil", "Green",
+                presets, new ArrayList<>(), songs, 0L, 5L, Set.of(User.Achievement.RATING_5_BEGINNER));
+        Assertions.assertThrows(RuntimeException.class, () -> priceService.buyMusicSheets(testUser, song3));
+    }
+
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
             1.0, 1.0, 1.0, SynthPreset.Polyphony.POLYPHONIC, false, 10);
     private SynthPreset preset2 = new SynthPreset(1L, "Smooth", 1.0, 1.0, 1.0, 1.0,

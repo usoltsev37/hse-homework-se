@@ -29,4 +29,8 @@ public class MusicService {
                 .collect(Collectors.toList());
     }
 
+    public List<Music> sortMusicsByAuthor(List<Music> musicList) {
+        return musicList.stream().sorted(Comparator.comparing(Music::getAuthor)).collect(Collectors.toList());
+    }
+
 }
