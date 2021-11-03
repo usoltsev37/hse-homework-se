@@ -113,11 +113,19 @@ class SoundMappingApplicationTests {
     }
 
     @Test
-    void tesSheetsCreater() {
+    void testSheetsCreator() {
         MusicService musicService = new MusicService();
         String sheetsUrl = "";
-        musicService.addSheetsUser(user1, sheetsUrl);
+        musicService.addSheetsUser(user1, sheetsUrl, instrumental2);
         Assertions.assertTrue(user1.getAchievements().contains(User.Achievement.CREATOR));
+    }
+
+    @Test
+    void testSerializePreset() {
+        PresetService presetService = new PresetService();
+        String jsonString = presetService.serialize(preset1);
+        SynthPreset deserializedPreset = presetService.deserialize(jsonString);
+        Assertions.assertEquals(preset1, deserializedPreset);
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
@@ -151,11 +159,11 @@ class SoundMappingApplicationTests {
 
 
     private User user1 = new User(1L, "fst@mail.ru", "password1", "Phil", "Green",
-            presets, new ArrayList<>(), songs, 0L, 5L, Set.of(User.Achievement.RATING_5_BEGINNER));
+            presets, new ArrayList<>(), songs, 0L, 5L, new HashSet<>(Collections.singletonList(User.Achievement.RATING_5_BEGINNER)));
     private User user2 = new User(2L, "snd@mail.ru", "password2", "Jack", "Black",
-            presets, ins, songs, 100L, 10L, Set.of(User.Achievement.RATING_10_TALENTED, User.Achievement.WELCOME_THE_JUNGLE));
+            presets, ins, songs, 100L, 10L, new HashSet<>(Arrays.asList(User.Achievement.RATING_10_TALENTED, User.Achievement.WELCOME_THE_JUNGLE)));
     private User user3 = new User(2L, "thd@mail.ru", "password3", "Nick", "White",
-            new ArrayList<>(), ins, new ArrayList<>(), 50L, 0L, Set.of(User.Achievement.WELCOME_THE_JUNGLE));
+            new ArrayList<>(), ins, new ArrayList<>(), 50L, 0L,new HashSet<>(Collections.singletonList(User.Achievement.WELCOME_THE_JUNGLE)));
     private final List<User> users = List.of(user1, user2, user3);
 
 }

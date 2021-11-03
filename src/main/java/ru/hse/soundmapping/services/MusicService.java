@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import ru.hse.soundmapping.models.Music;
 import ru.hse.soundmapping.models.SynthPreset;
+import ru.hse.soundmapping.models.User;
 
 @Service
 public class MusicService {
@@ -33,4 +34,8 @@ public class MusicService {
         return musicList.stream().sorted(Comparator.comparing(Music::getAuthor)).collect(Collectors.toList());
     }
 
+    public void addSheetsUser(User user, String sheetsUrl, Music music) {
+        user.getAchievements().add(User.Achievement.CREATOR);
+        music.setSheetsUrl(sheetsUrl);
+    }
 }
