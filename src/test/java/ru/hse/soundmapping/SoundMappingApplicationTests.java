@@ -112,6 +112,14 @@ class SoundMappingApplicationTests {
         Assertions.assertThrows(RuntimeException.class, () -> priceService.buyMusicSheets(testUser, song3));
     }
 
+    @Test
+    void tesSheetsCreater() {
+        MusicService musicService = new MusicService();
+        String sheetsUrl = "";
+        musicService.addSheetsUser(user1, sheetsUrl);
+        Assertions.assertTrue(user1.getAchievements().contains(User.Achievement.CREATOR));
+    }
+
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
             1.0, 1.0, 1.0, SynthPreset.Polyphony.POLYPHONIC, false, 10);
     private SynthPreset preset2 = new SynthPreset(1L, "Smooth", 1.0, 1.0, 1.0, 1.0,

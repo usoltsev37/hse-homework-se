@@ -52,6 +52,9 @@ public class PriceService {
     }
 
     public void buyMusicSheets(User user, Music music) {
+        if (!isEnoughMoneyToBuy(user, music.getPrice())) {
+            throw new RuntimeException("");
+        }
         user.setBalance(user.getBalance() - music.getPrice());
     }
 
