@@ -59,6 +59,9 @@ class SoundMappingApplicationTests {
         Assertions.assertEquals(new HashSet<String>(List.of("Pop", "Hip-Hop")), musicService.getUniqueGenres(songs));
     }
 
+    @Test
+    void test
+
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
             1.0, 1.0, 1.0, SynthPreset.Polyphony.POLYPHONIC, false, 10);
     private SynthPreset preset2 = new SynthPreset(1L, "Smooth", 1.0, 1.0, 1.0, 1.0,
