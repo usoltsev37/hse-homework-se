@@ -1,6 +1,10 @@
 package ru.hse.soundmapping;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -56,17 +60,21 @@ class SoundMappingApplicationTests {
     @Test
     void testUniqueGenres() {
         MusicService musicService = new MusicService();
-        Assertions.assertEquals(new HashSet<String>(List.of("Pop", "Hip-Hop")), musicService.getUniqueGenres(songs));
+        Assertions.assertEquals(new HashSet<>(List.of("Pop", "Hip-Hop")), musicService.getUniqueGenres(songs));
     }
 
     @Test
     void testUserRating() {
-        user1.addSong(song1);
-        user1.addSong(song2);
-        user1.addSong(song3);
-        user1.addSong(song4);
-        user1.addSong(song5);
-        Assertions.assertEquals(5l, user1.getRating());
+        user3.addSong(song1);
+        user3.addSong(song2);
+        user3.addSong(song3);
+        Assertions.assertEquals(3L, user3.getRating());
+    }
+
+    @Test
+    void testBestRatingAchievement() {
+        Assertions.assertEquals(User.Achievement.RATING_5_BEGINNER, PriceService.getBestRatingAchievement(user1));
+        Assertions.assertEquals(User.Achievement.RATING_5_BEGINNER, PriceService.getBestRatingAchievement(user1));
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,

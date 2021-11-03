@@ -41,4 +41,9 @@ public class User {
         CREATOR // создал собственные ноты
     }
 
+    public void addSong(Music song) {
+        music.add(song);
+        rating++;
+    }
+
 }
