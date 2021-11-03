@@ -29,3 +29,12 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+apply plugin: 'checkstyle'
+checkstyle {
+    toolVersion = '8.42'
+    configFile = rootProject.file('./checkstyle.xml')
+    maxErrors = 0
+    maxWarnings = 0
+    ignoreFailures = false
+}

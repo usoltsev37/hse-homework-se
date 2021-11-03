@@ -12,7 +12,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                name: [ ubuntu, macos, windows ]
+                name: [ ubuntu, macos ]
                 include:
                     - name: ubuntu
                       os: ubuntu-latest
@@ -21,10 +21,6 @@ jobs:
                     - name: macos
                       os: macos-latest
                       os_label: MacOS
-
-                    - name: windows
-                      os: windows-latest
-                      os_label: Windows
 
         steps:
             -   uses: actions/checkout@v2
@@ -41,9 +37,15 @@ jobs:
             -   name: Build with Gradle
                 run: ./gradlew build
 
+            -   name: Run linter
+                run: ./gradlew lint
+
+            -   name: Run tests
+                run: ./gradlew test
+
             -   name: Upload coverage to Codecov
-                    if: matrix.os == 'ubuntu-latest'
-                    uses: codecov/codecov-action@v1.5.0
-                    with:
-                        flags: unittests
-                        fail_ci_if_error: true
+                if: matrix.os == 'ubuntu'
+                uses: codecov/codecov-action@v1.5.0
+                with:
+                    flags: unittests
+                    fail_ci_if_error: true
