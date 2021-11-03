@@ -37,9 +37,8 @@ jobs:
             -   name: Run tests
                 run: ./gradlew test
 
-            -   name: Upload coverage to Codecov
-                if: matrix.os == 'ubuntu-latest'
-                uses: codecov/codecov-action@v1.5.0
+            -   name: Upload Jacoco coverage report
+                uses: actions/upload-artifact@v2
                 with:
-                    flags: unittests
-                    fail_ci_if_error: true
+                    name: Jacoco report
+                    path: build/jacocoHtml
