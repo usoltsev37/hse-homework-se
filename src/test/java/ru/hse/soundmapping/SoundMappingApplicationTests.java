@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.hse.soundmapping.models.Music;
@@ -13,8 +12,9 @@ import ru.hse.soundmapping.models.MusicalInstrument;
 import ru.hse.soundmapping.models.SynthPreset;
 import ru.hse.soundmapping.models.User;
 import ru.hse.soundmapping.services.MusicService;
-import ru.hse.soundmapping.services.PriceService;
 import ru.hse.soundmapping.services.PresetService;
+import ru.hse.soundmapping.services.PriceService;
+import ru.hse.soundmapping.services.UserService;
 
 class SoundMappingApplicationTests {
 
@@ -131,10 +131,11 @@ class SoundMappingApplicationTests {
 
     @Test
     void testInstrumentsMusician() {
-        user3.getFavouriteMusicalInstruments().add(in1);
-        user3.getFavouriteMusicalInstruments().add(in2);
-        user3.getFavouriteMusicalInstruments().add(in3);
-        Assertions.assertTrue(user3.getFavouriteMusicalInstruments().contains(User.Achievement.TALENTED_MUSICIAN));
+        UserService userService = new UserService();
+        userService.addFavouriteInstrument(user3, in1);
+        userService.addFavouriteInstrument(user3, in2);
+        userService.addFavouriteInstrument(user3, in3);
+        Assertions.assertTrue(user3.getAchievements().contains(User.Achievement.TALENTED_MUSICIAN));
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
@@ -153,18 +154,18 @@ class SoundMappingApplicationTests {
     private List<MusicalInstrument> ins = Arrays.asList(in1, in2, in3);
 
     private Music song1 = new Music(0L, Music.MusicType.SONG, "Pop", presets, "Blinding Lights",
-            "The Weeknd", Collections.singletonList(in3), "https://example.com", 200, 5);
+            "The Weeknd", Arrays.asList(in3), "https://example.com", 200, 5);
     private Music song2 = new Music(1L, Music.MusicType.SONG, "Hip-Hop", Arrays.asList(preset1, preset4), "Stronger",
-            "Kanye West", Collections.singletonList(in3), "https://example.com", 50, 3);
+            "Kanye West", Arrays.asList(in3), "https://example.com", 50, 3);
     private Music song3 = new Music(2L, Music.MusicType.SONG, "Hip-Hop", List.of(preset3), "Nonstop",
-            "Drake", Collections.singletonList(in3), "https://example.com", 100, 1);
+            "Drake", Arrays.asList(in3), "https://example.com", 100, 1);
     private List<Music> songs = Arrays.asList(song1, song2, song3);
 
     private Music instrumental1 = new Music(3L, Music.MusicType.INSTRUMENTAL, "Neoclassicism", presets, "Experience",
             "Ludovico Einaudi", Collections.singletonList(in2), "https://example.com", 300, 5);
     private Music instrumental2 = new Music(4L, Music.MusicType.INSTRUMENTAL, "Fonk", presets, "Close Eyes",
             "DVRST", Collections.singletonList(in3), "https://example.com", 0, 0);
-    private List<Music> instrumentals = List.of(instrumental1, instrumental2);
+    private List<Music> instrumentals = Arrays.asList(instrumental1, instrumental2);
 
 
     private User user1 = new User(1L, "fst@mail.ru", "password1", "Phil", "Green",
@@ -172,7 +173,7 @@ class SoundMappingApplicationTests {
     private User user2 = new User(2L, "snd@mail.ru", "password2", "Jack", "Black",
             presets, ins, songs, 100L, 10L, new HashSet<>(Arrays.asList(User.Achievement.RATING_10_TALENTED, User.Achievement.WELCOME_THE_JUNGLE)));
     private User user3 = new User(2L, "thd@mail.ru", "password3", "Nick", "White",
-            new ArrayList<>(), ins, new ArrayList<>(), 50L, 0L,new HashSet<>(Collections.singletonList(User.Achievement.WELCOME_THE_JUNGLE)));
+            new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 50L, 0L, new HashSet<>(Collections.singletonList(User.Achievement.WELCOME_THE_JUNGLE)));
     private final List<User> users = List.of(user1, user2, user3);
 
 }

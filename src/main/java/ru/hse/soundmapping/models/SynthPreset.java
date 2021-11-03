@@ -43,7 +43,7 @@ public class SynthPreset {
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
-        SynthPreset p = (SynthPreset)obj;
+        SynthPreset p = (SynthPreset) obj;
         return this.id.equals(p.id)
                 && this.gate == p.gate
                 && this.attack == p.attack

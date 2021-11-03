@@ -40,7 +40,8 @@ public class User {
         RATING_20_MASTER,
         RATING_25_GOD,
         WELCOME_THE_JUNGLE, // Пополнение баланса на >= 100
-        CREATOR // создал собственные ноты
+        CREATOR, // создал собственные ноты
+        TALENTED_MUSICIAN
     }
 
     public void addSong(Music song) {
