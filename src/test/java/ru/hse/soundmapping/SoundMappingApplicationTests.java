@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.hse.soundmapping.models.Music;
@@ -32,7 +33,14 @@ class SoundMappingApplicationTests {
         PriceService priceService = new PriceService();
         Assertions.assertEquals(95, priceService.getMusicPriceForUser(song3, user1));
         Assertions.assertEquals(80, priceService.getMusicPriceForUser(song3, user2));
-        Assertions.assertEquals(100, priceService.getMusicPriceForUser(song3, user1));
+        Assertions.assertEquals(100, priceService.getMusicPriceForUser(song3, user3));
+    }
+
+    @Test
+    void testEnoughMoneyToBuy() {
+        PriceService priceService = new PriceService();
+        Assertions.assertEquals(true, priceService.isEnoughMoneyToBuy(user2, 50));
+        Assertions.assertEquals(false, priceService.isEnoughMoneyToBuy(user2, 100));
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
