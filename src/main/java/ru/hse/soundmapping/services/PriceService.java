@@ -53,4 +53,19 @@ public class PriceService {
     public void buyMusicSheets(User user, Music music) {
         user.setBalance(user.getBalance() - music.getPrice());
     }
+
+    public static User.Achievement getBestRatingAchievement(User user) {
+        List<User.Achievement> achievements = user.getAchievements();
+        if (achievements.contains(User.Achievement.RATING_25_GOD)) {
+            return User.Achievement.RATING_25_GOD;
+        } else if (achievements.contains(User.Achievement.RATING_20_MASTER)) {
+            return User.Achievement.RATING_20_MASTER;
+        } else if (achievements.contains(User.Achievement.RATING_15_INTERMEDIATE)) {
+            return User.Achievement.RATING_15_INTERMEDIATE;
+        } else if (achievements.contains(User.Achievement.RATING_10_TALENTED)) {
+            return User.Achievement.RATING_10_TALENTED;
+        } else {
+            return User.Achievement.RATING_5_BEGINNER;
+        }
+    }
 }
