@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SoundMappingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SoundMappingApplication.class, args);
+        SpringApplication.run(SoundMappingApplication.class, args);
 	}
 
 }

@@ -1,12 +1,11 @@
 package ru.hse.soundmapping.models;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-
-import java.util.List;
 
 @Setter
 @Getter
@@ -20,7 +19,7 @@ public class Music {
     }
 
     @Id
-    private Long Id;
+    private Long id;
     private MusicType type;
     private String genre;
     private List<SynthPreset> presets;
