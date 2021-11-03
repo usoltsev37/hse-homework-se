@@ -60,7 +60,14 @@ class SoundMappingApplicationTests {
     }
 
     @Test
-    void test
+    void testUserRating() {
+        user1.addSong(song1);
+        user1.addSong(song2);
+        user1.addSong(song3);
+        user1.addSong(song4);
+        user1.addSong(song5);
+        Assertions.assertEquals(5l, user1.getRating());
+    }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
             1.0, 1.0, 1.0, SynthPreset.Polyphony.POLYPHONIC, false, 10);
