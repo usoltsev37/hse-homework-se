@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.hse.soundmapping.models.Music;
 import ru.hse.soundmapping.models.MusicalInstrument;
 import ru.hse.soundmapping.models.SynthPreset;
 import ru.hse.soundmapping.models.User;
+import ru.hse.soundmapping.services.MusicService;
 import ru.hse.soundmapping.services.PriceService;
 
 class SoundMappingApplicationTests {
@@ -25,6 +25,14 @@ class SoundMappingApplicationTests {
     void testSortMusicsByRating() {
         MusicService musicService = new MusicService();
         Assertions.assertEquals(List.of(song1, song2, song3), musicService.sortMusicsByRating(songs));
+    }
+
+    @Test
+    void testMusicPriceWithUserRating() {
+        PriceService priceService = new PriceService();
+        Assertions.assertEquals(95, priceService.getMusicPriceForUser(song3, user1));
+        Assertions.assertEquals(80, priceService.getMusicPriceForUser(song3, user2));
+        Assertions.assertEquals(100, priceService.getMusicPriceForUser(song3, user1));
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
@@ -60,9 +68,10 @@ class SoundMappingApplicationTests {
     private User user1 = new User(1L, "fst@mail.ru", "password1", "Phil", "Green",
             presets, new ArrayList<>(), songs, 0L, 5L, List.of(User.Achievement.RATING_5_BEGINNER));
     private User user2 = new User(2L, "snd@mail.ru", "password2", "Jack", "Black",
-            presets, ins, songs, 100L, 10L, Arrays.asList(User.Achievement.RATING_5_BEGINNER,
+            presets, ins, songs, 100L, 10L, Arrays.asList(User.Achievement.RATING_20_MASTER,
             User.Achievement.RATING_10_TALENTED, User.Achievement.WELCOME_THE_JUNGLE));
     private User user3 = new User(2L, "thd@mail.ru", "password3", "Nick", "White",
             new ArrayList<>(), ins, new ArrayList<>(), 50L, 0L, List.of(User.Achievement.WELCOME_THE_JUNGLE));
+    private final List<User> users = List.of(user1, user2, user3);
 
 }
