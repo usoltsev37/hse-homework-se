@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import ru.hse.soundmapping.models.Music;
+import ru.hse.soundmapping.models.SynthPreset;
 
 @Service
 public class MusicService {
@@ -21,4 +22,11 @@ public class MusicService {
                 .map(Music::getGenre)
                 .collect(Collectors.toSet());
     }
+
+    public List<SynthPreset> getPremiumSynthPresets(List<SynthPreset> presets) {
+        return presets.stream()
+                .filter(SynthPreset::isPremium)
+                .collect(Collectors.toList());
+    }
+
 }

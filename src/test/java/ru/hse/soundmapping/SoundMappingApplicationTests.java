@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.hse.soundmapping.models.Music;
@@ -97,6 +96,12 @@ class SoundMappingApplicationTests {
 
         Assertions.assertTrue(musicService.getPremiumSynthPresets(presets).contains(preset2));
         Assertions.assertTrue(musicService.getPremiumSynthPresets(presets).contains(preset4));
+    }
+
+    @Test
+    void testSortMusicsByAuthor() {
+        MusicService musicService = new MusicService();
+        Assertions.assertEquals(List.of(song3, song2, song1), musicService.sortMusicsByAuthor(songs));
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
