@@ -14,6 +14,7 @@ import ru.hse.soundmapping.models.SynthPreset;
 import ru.hse.soundmapping.models.User;
 import ru.hse.soundmapping.services.MusicService;
 import ru.hse.soundmapping.services.PriceService;
+import ru.hse.soundmapping.services.PresetService;
 
 class SoundMappingApplicationTests {
 
@@ -48,7 +49,7 @@ class SoundMappingApplicationTests {
     void testBuyMusic() {
         PriceService priceService = new PriceService();
         User testUser = new User(6L, "fst@mail.ru", "password1", "Phil", "Green",
-                presets, new ArrayList<>(), songs, 500L, 5L, Set.of(User.Achievement.RATING_5_BEGINNER));
+                presets, new ArrayList<>(), songs, 500L, 5L, new HashSet<>(Collections.singletonList(User.Achievement.RATING_5_BEGINNER)));
         priceService.buyMusicSheets(testUser, instrumental1);
         Assertions.assertEquals(200L, testUser.getBalance());
         priceService.buyMusicSheets(testUser, song2);
@@ -108,7 +109,7 @@ class SoundMappingApplicationTests {
     void testBuyMusicIfNotEnoughMoney() {
         PriceService priceService = new PriceService();
         User testUser = new User(6L, "fst@mail.ru", "password1", "Phil", "Green",
-                presets, new ArrayList<>(), songs, 0L, 5L, Set.of(User.Achievement.RATING_5_BEGINNER));
+                presets, new ArrayList<>(), songs, 0L, 5L, new HashSet<>(Collections.singletonList((User.Achievement.RATING_5_BEGINNER))));
         Assertions.assertThrows(RuntimeException.class, () -> priceService.buyMusicSheets(testUser, song3));
     }
 
@@ -126,6 +127,14 @@ class SoundMappingApplicationTests {
         String jsonString = presetService.serialize(preset1);
         SynthPreset deserializedPreset = presetService.deserialize(jsonString);
         Assertions.assertEquals(preset1, deserializedPreset);
+    }
+
+    @Test
+    void testInstrumentsMusician() {
+        user3.getFavouriteMusicalInstruments().add(in1);
+        user3.getFavouriteMusicalInstruments().add(in2);
+        user3.getFavouriteMusicalInstruments().add(in3);
+        Assertions.assertTrue(user3.getFavouriteMusicalInstruments().contains(User.Achievement.TALENTED_MUSICIAN));
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
