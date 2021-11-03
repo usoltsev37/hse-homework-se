@@ -1,9 +1,7 @@
 package ru.hse.soundmapping;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.hse.soundmapping.models.Music;
@@ -48,11 +46,17 @@ class SoundMappingApplicationTests {
         User testUser = new User(6L, "fst@mail.ru", "password1", "Phil", "Green",
                 presets, new ArrayList<>(), songs, 500L, 5L, List.of(User.Achievement.RATING_5_BEGINNER));
         priceService.buyMusicSheets(testUser, instrumental1);
-        Assertions.assertEquals(300L, testUser.getBalance());
+        Assertions.assertEquals(200L, testUser.getBalance());
         priceService.buyMusicSheets(testUser, song2);
-        Assertions.assertEquals(250L, testUser.getBalance());
+        Assertions.assertEquals(150L, testUser.getBalance());
         priceService.buyMusicSheets(testUser, instrumental2);
-        Assertions.assertEquals(250L, testUser.getBalance());
+        Assertions.assertEquals(150L, testUser.getBalance());
+    }
+
+    @Test
+    void testUniqueGenres() {
+        MusicService musicService = new MusicService();
+        Assertions.assertEquals(new HashSet<String>(List.of("Pop", "Hip-Hop")), musicService.getUniqueGenres(songs));
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,

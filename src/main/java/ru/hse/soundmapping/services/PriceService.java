@@ -49,4 +49,8 @@ public class PriceService {
     public boolean isEnoughMoneyToBuy(User user, int price) {
         return user.getBalance() >= price;
     }
+
+    public void buyMusicSheets(User user, Music music) {
+        user.setBalance(user.getBalance() - music.getPrice());
+    }
 }
