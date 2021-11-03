@@ -20,6 +20,12 @@ class SoundMappingApplicationTests {
         Assertions.assertEquals(350, priceService.getPrice(songs));
 	}
 
+    @Test
+    void testSortMusicsByRating() {
+        PriceService priceService = new PriceService();
+        Assertions.assertEquals(priceService.sortMusicsByRating(songs));
+    }
+
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
             1.0, 1.0, 1.0, SynthPreset.Polyphony.POLYPHONIC, false, 10);
     private SynthPreset preset2 = new SynthPreset(1L, "Smooth", 1.0, 1.0, 1.0, 1.0,

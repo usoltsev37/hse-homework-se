@@ -302,12 +302,12 @@
             <property name="allowedAnnotations" value="Override, Test"/>
             <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF"/>
         </module>
-        <module name="MissingJavadocMethod">
-            <property name="scope" value="public"/>
-            <property name="minLineCount" value="2"/>
-            <property name="allowedAnnotations" value="Override, Test"/>
-            <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF"/>
-        </module>
+<!--        <module name="MissingJavadocMethod">-->
+<!--            <property name="scope" value="public"/>-->
+<!--            <property name="minLineCount" value="2"/>-->
+<!--            <property name="allowedAnnotations" value="Override, Test"/>-->
+<!--            <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF"/>-->
+<!--        </module>-->
         <module name="MethodName">
             <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
             <message key="name.invalidPattern"
@@ -357,18 +357,18 @@
         <!-- Ensure only Google Truth is used. Exception made for JUnit 5 assertThrows, assertAll, and fail.
         TODO remove assertThrows exclusion when Truth supports it
         -->
-        <module name="RegexpSinglelineJava">
-            <property name="format"
-                      value="import.*(?&lt;!com\.google\.common\.truth\.Truth8?\.)(A|a)ssert(?!.*(Throws|DoesNotThrow|All|fail))"/>
-            <property name="ignoreComments" value="true"/>
-            <property name="message" value="Use com.google.truth.Truth assertions."/>
-        </module>
-        <module name="RegexpSinglelineJava">
-            <property name="format"
-                      value="(?&lt;!import static.*)(Truth|Assertions|Mockito|ArgumentMatchers)"/>
-            <property name="ignoreComments" value="true"/>
-            <property name="message" value="Use a static import."/>
-        </module>
+<!--        <module name="RegexpSinglelineJava">-->
+<!--            <property name="format"-->
+<!--                      value="import.*(?&lt;!com\.google\.common\.truth\.Truth8?\.)(A|a)ssert(?!.*(Throws|DoesNotThrow|All|fail))"/>-->
+<!--            <property name="ignoreComments" value="true"/>-->
+<!--            <property name="message" value="Use com.google.truth.Truth assertions."/>-->
+<!--        </module>-->
+<!--        <module name="RegexpSinglelineJava">-->
+<!--            <property name="format"-->
+<!--                      value="(?&lt;!import static.*)(Truth|Assertions|Mockito|ArgumentMatchers)"/>-->
+<!--            <property name="ignoreComments" value="true"/>-->
+<!--            <property name="message" value="Use a static import."/>-->
+<!--        </module>-->
 
         <!-- Regexp for JavaDoc -->
         <!-- Ensure links in Javadocs are tagged correctly -->
