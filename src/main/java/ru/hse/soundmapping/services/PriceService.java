@@ -45,4 +45,8 @@ public class PriceService {
 
         return song.getPrice() * (100 - percentDiscount) / 100;
     }
+
+    public boolean isEnoughMoneyToBuy(User user, int price) {
+        return user.getBalance() >= price;
+    }
 }
