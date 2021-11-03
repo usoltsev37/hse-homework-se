@@ -1,6 +1,7 @@
 package ru.hse.soundmapping.services;
 
 import java.util.List;
+import java.util.Set;
 import org.springframework.stereotype.Service;
 import ru.hse.soundmapping.models.Music;
 import ru.hse.soundmapping.models.User;
@@ -54,8 +55,8 @@ public class PriceService {
         user.setBalance(user.getBalance() - music.getPrice());
     }
 
-    public static User.Achievement getBestRatingAchievement(User user) {
-        List<User.Achievement> achievements = user.getAchievements();
+    public User.Achievement getBestRatingAchievement(User user) {
+        Set<User.Achievement> achievements = user.getAchievements();
         if (achievements.contains(User.Achievement.RATING_25_GOD)) {
             return User.Achievement.RATING_25_GOD;
         } else if (achievements.contains(User.Achievement.RATING_20_MASTER)) {
@@ -66,6 +67,14 @@ public class PriceService {
             return User.Achievement.RATING_10_TALENTED;
         } else {
             return User.Achievement.RATING_5_BEGINNER;
+        }
+    }
+
+    public void topUserBalance(User user, int balance) {
+        user.setBalance(user.getBalance() + balance);
+
+        if (user.getBalance() >= 100) {
+            user.getAchievements().add(User.Achievement.WELCOME_THE_JUNGLE);
         }
     }
 }

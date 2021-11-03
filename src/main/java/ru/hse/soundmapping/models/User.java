@@ -1,6 +1,8 @@
 package ru.hse.soundmapping.models;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +31,7 @@ public class User {
     private Long balance;
 
     private Long rating;
-    private List<Achievement> achievements;
+    private Set<Achievement> achievements = new HashSet<>();
 
     public enum Achievement {
         RATING_5_BEGINNER,

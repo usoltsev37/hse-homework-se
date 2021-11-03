@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.hse.soundmapping.models.Music;
@@ -47,7 +49,7 @@ class SoundMappingApplicationTests {
     void testBuyMusic() {
         PriceService priceService = new PriceService();
         User testUser = new User(6L, "fst@mail.ru", "password1", "Phil", "Green",
-                presets, new ArrayList<>(), songs, 500L, 5L, List.of(User.Achievement.RATING_5_BEGINNER));
+                presets, new ArrayList<>(), songs, 500L, 5L, Set.of(User.Achievement.RATING_5_BEGINNER));
         priceService.buyMusicSheets(testUser, instrumental1);
         Assertions.assertEquals(200L, testUser.getBalance());
         priceService.buyMusicSheets(testUser, song2);
@@ -72,18 +74,29 @@ class SoundMappingApplicationTests {
 
     @Test
     void testBestRatingAchievement() {
-        Assertions.assertEquals(User.Achievement.RATING_5_BEGINNER, PriceService.getBestRatingAchievement(user1));
-        Assertions.assertEquals(User.Achievement.RATING_10_TALENTED, PriceService.getBestRatingAchievement(user2));
+        PriceService priceService = new PriceService();
+        Assertions.assertEquals(User.Achievement.RATING_5_BEGINNER, priceService.getBestRatingAchievement(user1));
+        Assertions.assertEquals(User.Achievement.RATING_10_TALENTED, priceService.getBestRatingAchievement(user2));
     }
 
     @Test
     void testWelcomeToTheJungle() {
         User user = new User(4L, "third@mail.ru", "jspj2ja2", "July", "Brown",
-                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 0L, 0L, new ArrayList<>());
-        PriceService.topUserBalance(user, 40);
-        Assertions.assertEquals(new ArrayList<>(), user.getAchievements());
-        PriceService.topUserBalance(user, 150);
-        Assertions.assertEquals(Arrays.asList(User.Achievement.WELCOME_THE_JUNGLE) , user.getAchievements());
+                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 0L, 0L, new HashSet<>());
+        PriceService priceService = new PriceService();
+
+        priceService.topUserBalance(user, 40);
+        Assertions.assertFalse(user.getAchievements().contains(User.Achievement.WELCOME_THE_JUNGLE));
+        priceService.topUserBalance(user, 150);
+        Assertions.assertTrue(user.getAchievements().contains(User.Achievement.WELCOME_THE_JUNGLE));
+    }
+
+    @Test
+    void testGetPremiumSynthPresets() {
+        MusicService musicService = new MusicService();
+
+        Assertions.assertTrue(musicService.getPremiumSynthPresets(presets).contains(preset2));
+        Assertions.assertTrue(musicService.getPremiumSynthPresets(presets).contains(preset4));
     }
 
     private SynthPreset preset1 = new SynthPreset(0L, "Wave", 1.0, 1.0, 1.0, 1.0,
@@ -117,11 +130,11 @@ class SoundMappingApplicationTests {
 
 
     private User user1 = new User(1L, "fst@mail.ru", "password1", "Phil", "Green",
-            presets, new ArrayList<>(), songs, 0L, 5L, List.of(User.Achievement.RATING_5_BEGINNER));
+            presets, new ArrayList<>(), songs, 0L, 5L, Set.of(User.Achievement.RATING_5_BEGINNER));
     private User user2 = new User(2L, "snd@mail.ru", "password2", "Jack", "Black",
-            presets, ins, songs, 100L, 10L, Arrays.asList(User.Achievement.RATING_10_TALENTED, User.Achievement.WELCOME_THE_JUNGLE));
+            presets, ins, songs, 100L, 10L, Set.of(User.Achievement.RATING_10_TALENTED, User.Achievement.WELCOME_THE_JUNGLE));
     private User user3 = new User(2L, "thd@mail.ru", "password3", "Nick", "White",
-            new ArrayList<>(), ins, new ArrayList<>(), 50L, 0L, List.of(User.Achievement.WELCOME_THE_JUNGLE));
+            new ArrayList<>(), ins, new ArrayList<>(), 50L, 0L, Set.of(User.Achievement.WELCOME_THE_JUNGLE));
     private final List<User> users = List.of(user1, user2, user3);
 
 }
