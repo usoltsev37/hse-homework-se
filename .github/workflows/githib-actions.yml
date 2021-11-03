@@ -38,7 +38,7 @@ jobs:
                 run: ./gradlew test
 
             -   name: Upload coverage to Codecov
-                if: matrix.os == 'ubuntu'
+                if: matrix.os == 'ubuntu-latest'
                 uses: codecov/codecov-action@v1.5.0
                 with:
                     flags: unittests
