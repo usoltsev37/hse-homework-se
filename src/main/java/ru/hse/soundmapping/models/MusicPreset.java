@@ -1,6 +1,5 @@
 package ru.hse.soundmapping.models;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,18 +10,20 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Getter
-@Setter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table (name = "MusicalInstrument")
-public class MusicalInstrument {
+@Getter
+@Setter
+@Table(name = "MusicPreset")
+public class MusicPreset {
     @Id
-    @Column(name = "name")
-    private String name;
+    @Column(name = "id")
+    private Long id;
 
-    @Column (name = "premium")
-    private boolean premium;
+    @Column(name = "music_id")
+    private Long musicId;
 
+    @Column(name = "preset_id")
+    private Long presetId;
 }

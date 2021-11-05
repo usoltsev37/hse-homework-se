@@ -1,0 +1,30 @@
+version: "3.6"
+
+services:
+
+  database:
+    build: ./src/main/database/
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: hsepassword
+      MYSQL_DATABASE: SoundMapDB
+    networks:
+      - employee-mysql  
+    ports:
+      - 3308:3306
+
+  server:
+    build: .
+    restart: on-failure
+    depends_on:
+      - database
+    links: 
+      - database  
+    networks:
+      - employee-mysql  
+    ports:
+      - 8080:8080
+      
+networks:
+  employee-mysql:              

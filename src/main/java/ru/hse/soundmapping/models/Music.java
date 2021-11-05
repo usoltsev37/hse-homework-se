@@ -1,34 +1,47 @@
 package ru.hse.soundmapping.models;
 
-import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "Music")
 public class Music {
 
-    public enum MusicType {
-        SONG,
-        INSTRUMENTAL
-    }
-
     @Id
+    @Column (name = "id")
     private Long id;
-    private MusicType type;
+
+    @Column (name = "type")
+    private String type;
+
+    @Column (name = "genre")
     private String genre;
-    private List<SynthPreset> presets;
+
+    @Column (name = "name")
     private String name;
+
+    @Column (name = "author")
     private String author;
-    private List<MusicalInstrument> instruments;
+
+    @Column (name = "sheets_url")
     private String sheetsUrl;
+
+    @Column (name = "price")
     private int price;
 
+    @Column (name = "rating")
     private int sheetsRating;
-
 }
