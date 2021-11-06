@@ -12,3 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add REST API for database access
 - User can use REST API for music adding
 - User can add music to his library
+
+## [Release 1.1]
+
+### Added
+
+- Add Android application port 
+- Add user authentication
+- Add user profile
