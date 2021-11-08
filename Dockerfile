@@ -4,7 +4,7 @@ RUN mkdir /data
 WORKDIR /data
 COPY . /data
 
-RUN ./gradlew build -x test -x checkstyleMain -x checkstyleTest
+RUN ./gradlew build
 
 EXPOSE 8080
     
