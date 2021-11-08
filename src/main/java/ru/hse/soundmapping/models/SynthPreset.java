@@ -4,35 +4,45 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "SynthPreset")
 public class SynthPreset {
     @Id
+    @Column(name = "id")
     private Long id;
+    @Column(name = "name")
     private String name;
 
-    public enum Polyphony {
-        MONOPHONIC,
-        PARAPHONIC,
-        DUOPHONIC,
-        POLYPHONIC
-    }
-
+    @Column(name = "gate")
     private double gate;
+    @Column(name = "attack")
     private double attack;
+    @Column(name = "decay")
     private double decay;
+    @Column(name = "sustain")
     private double sustain;
+    @Column(name = "release_synth")
     private double release;
+    @Column(name = "cutoff")
     private double cutoff;
+    @Column(name = "threshold")
     private double threshold;
-    private Polyphony polyphony;
+    @Column(name = "polyphony")
+    private String polyphony;
 
     private boolean premium;
+    @Column(name = "price")
     private int price;
 
     @Override

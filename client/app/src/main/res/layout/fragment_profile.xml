@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="53dp">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:focusable="true"
+            android:padding="20dp"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/profile_avatar_bg"
+            android:elevation="4dp"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="200dp"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/becomeGuideButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="175dp"
+                android:text="Стать гидом" />
+
+            <Button
+                android:id="@+id/buttonToChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Чат" />
+
+        </RelativeLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileGuideInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/profile_layout"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="20dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/info_margin_start_size"
+                android:layout_marginTop="@dimen/info_margin_top_size"
+                android:text="Email: "
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="?android:attr/textAppearanceMedium"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/info_margin_start_size"
+                android:layout_marginTop="@dimen/info_margin_top_size"
+                app:layout_constraintStart_toEndOf="@+id/textViewMobile"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_max="200dp"
+                style="?android:attr/textAppearanceMedium"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/textViewLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/info_margin_start_size"
+                android:layout_marginTop="@dimen/info_margin_top_size"
+                android:text="Локация: "
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email"
+                style="?android:attr/textAppearanceMedium"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/info_margin_start_size"
+                android:layout_marginTop="@dimen/info_margin_top_size"
+                app:layout_constraintStart_toEndOf="@+id/textViewMobile"
+                app:layout_constraintTop_toBottomOf="@+id/email"
+                app:layout_constraintWidth_max="200dp"
+                style="?android:attr/textAppearanceMedium"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/textViewMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/info_margin_start_size"
+                android:layout_marginTop="@dimen/info_margin_top_size"
+                android:text="Мобильный номер: "
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location"
+                style="?android:attr/textAppearanceMedium"
+                android:textIsSelectable="true"  />
+
+            <TextView
+                android:id="@+id/mobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/info_margin_start_size"
+                android:layout_marginTop="@dimen/info_margin_top_size"
+                app:layout_constraintStart_toEndOf="@+id/textViewMobile"
+                app:layout_constraintTop_toBottomOf="@id/location"
+                app:layout_constraintWidth_max="200dp"
+                style="?android:attr/textAppearanceMedium"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/info_margin_start_size"
+                android:layout_marginTop="@dimen/info_margin_top_size"
+                android:text="Описание: "
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mobileNumber"
+                style="?android:attr/textAppearanceMedium"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/info_margin_start_size"
+                android:layout_marginTop="@dimen/info_margin_top_size"
+                app:layout_constraintStart_toEndOf="@+id/textViewMobile"
+                app:layout_constraintTop_toBottomOf="@id/mobileNumber"
+                app:layout_constraintWidth_max="200dp"
+                style="?android:attr/textAppearanceMedium"
+                android:textIsSelectable="true" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/addExcursionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileGuideInfoLayout"
+            android:text="Добавить экскурсию" />
+    </RelativeLayout>
+</ScrollView>
