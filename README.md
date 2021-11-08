@@ -11,12 +11,13 @@ Project presentation is available [here](https://docs.google.com/presentation/d/
 
 ## Installation
 
+Download the ```sound-mapping.apk``` file from the latest release and open it on your Android device
+
 To run the server locally, please, clone our repository and in the root directory of the project run the following commands
 ```bash
 $ sudo docker compose build
 $ sudo docer compose up -d
 ```
-Download the ```app-debug.apk``` file and open it on your Android device
 
 ## Usage
 Users of the application can perform the following actions:
