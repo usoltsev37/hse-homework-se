@@ -1,4 +1,8 @@
 # Sound Mapping
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://choosealicense.com/licenses/apache-2.0/)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/usoltsev37/hse-homework-se/pulls)
+![workflow](https://github.com/usoltsev37/hse-homework-se/actions/workflows/githib-actions.yml/badge.svg)
+[![GitHub release](https://img.shields.io/github/v/release/usoltsev37/hse-homework-se)](https://github.com/usoltsev37/hse-homework-se/releases)
 
 ## Description
 
