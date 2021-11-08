@@ -7,23 +7,32 @@ Sound Mapping provides the following capabilities:
 * Get a graphical representation of a piece of music (sheets, tabs) by melody
 * The settings of a musical instrument (for example, a synthesizer) for a specific sound 
 
+Project presentation is available [here](https://docs.google.com/presentation/d/1CMpOUXObjyO55Z2z2sKBcBahaKF9QfR-16G77WDwUFA/edit?usp=sharing)
+
 ## Installation
 
-TODO
+To run the server locally, please, clone our repository and in the root directory of the project run the following commands
+```bash
+$ sudo docker compose build
+$ sudo docer compose up -d
+```
+Download the ```app-debug.apk``` file and open it on your Android device
 
 ## Usage
+Users of the application can perform the following actions:
+* Login user by google mail
+* Find music and add it to your favorites
+* Convert your sounds into sheet music
 
-TODO
+<p align="center">
+  <img src="/images/screen_authorization.png" width="350" title="screen_authorization">
+</p>
 
 ## Support
 
 Report about bugs there [Issue tracker](https://github.com/usoltsev37/hse-homework-se/issues)
 
 For all questions about the project, please contact <usoltsev-nv@yandex.ru>
-
-## Presentation
-
-[Presentation](https://docs.google.com/presentation/d/1CMpOUXObjyO55Z2z2sKBcBahaKF9QfR-16G77WDwUFA/edit?usp=sharing)
 
 ## ROADMAP
 
