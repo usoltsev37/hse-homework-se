@@ -20,7 +20,7 @@ Sheets creator can do the same thing as an authorized user and add music sheets.
 
 Moderator monitors the rights of musicians and protects our community from malicious content.
 
-## User Case Diagram
+## Use Case Diagram
 
 <p align="center">
   <img src="/images/use_case_diagram.png" title="Use Case Diagram" alt="Use Case Diagram">
@@ -34,11 +34,11 @@ As sheets creator I want to see other users' sheets, so I don't duplicate existe
 
 #### User story №2
 
-As premium user I want to use synth mapping technology to quickly play my favorite melodies on the instrument.
+As premium user I want to use synth mapping technology to quickly play my favorite melodies on the instrument without advertising.
 
 #### User story №3
 
-As an authorized user I want to have a profile, so I manage my actions in the app
+As an authorized user I want to have a profile to share my music and have a synchronization between all my devices.
 
 ## Job Story
 
