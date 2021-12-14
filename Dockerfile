@@ -1,10 +1,12 @@
 FROM amazoncorretto:11-alpine-jdk
 
-RUN mkdir /data
-WORKDIR /data
-COPY . /data
+COPY build.gradle settings.gradle gradlew data/
+COPY src/ data/src
+COPY gradle/ data/gradle
 
-RUN ./gradlew build
+WORKDIR /data
+
+RUN ./gradlew build -x checkstyleTest -x checkstyleMain
 
 EXPOSE 8080
     
