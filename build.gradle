@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'jacoco'
     id 'java'
+    id 'checkstyle'
 }
 
 group = 'ru.hse'
@@ -22,16 +23,12 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-websocket'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     runtimeOnly 'mysql:mysql-connector-java'
-    compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation "com.google.code.gson:gson:2.8.9"
-    implementation "org.jacoco:org.jacoco.core:0.8.7"
 }
 
 test {
@@ -39,7 +36,6 @@ test {
     finalizedBy jacocoTestReport
 }
 
-apply plugin: 'checkstyle'
 checkstyle {
     toolVersion = '8.42'
     configFile = rootProject.file('./checkstyle.xml')
@@ -71,7 +67,6 @@ jacocoTestCoverageVerification {
         rule {
             enabled = false
             element = 'CLASS'
-            includes = ['org.gradle.*']
 
             limit {
                 counter = 'LINE'
