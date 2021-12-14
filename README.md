@@ -20,12 +20,12 @@ Download the ```sound-mapping.apk``` file from the latest release and open it on
 To run the server locally, please, clone our repository and in the root directory of the project run the following commands
 ```bash
 $ sudo docker compose build
-$ sudo docer compose up -d
+$ sudo docker compose up -d
 ```
 
 ## Usage
 Users of the application can perform the following actions:
-* Login user by google mail
+* Login by google mail
 * Find music and add it to your favorites
 * Convert your sounds into sheet music
 
